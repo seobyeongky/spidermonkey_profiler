@@ -1,9 +1,15 @@
 Spidermonkey Profiler
 
-Require dtrace enabled spidermonkey build
+Profile the javascript app using the spidermonkey...
+Tested on Mac OSX
 
+[Requirements]
+Require dtrace enabled spidermonkey.
+Dtrace supported OS
+
+[How to use]
 sudo ./js_funcalls.d > the_result.txt
-This will hook the javascript function calls and the app gonna slow down.
+This will hook the javascript function calls(and the app gonna slow down.)
 
 To get the information from the raw output, Use the test123.
 To build test123
@@ -32,3 +38,14 @@ g++ test123.cpp -std=c++11 -o test123
 [ 15]       0.026(ms) : yt-phy.js ["/"].tmp.stage["yt-phy"].decc2e1ed3f3daf63c7543db0fc14cfcf0e4eee6.src["status.coffee"]/Status.prototype.check_combo
 [ 16]       0.027(ms) : yt-phy.js ["/"].tmp.stage["yt-phy"].decc2e1ed3f3daf63c7543db0fc14cfcf0e4eee6.src["scheduler.coffee"]/Scheduler.prototype.tick
 [ 17]       0.850(ms) : yt-phy.js ["/"].tmp.stage["yt-phy"].decc2e1ed3f3daf63c7543db0fc14cfcf0e4eee6.src["game.coffee"]/Game.prototype.tick/loga
+
+[Note]
+The Dtrace probe can miss the javascript function call message.
+So, output will be corrupted. And the function informations will hide(Not gone).
+The corrupted information looks like this.
+[0] 10000ms something
+[1] 1ms something2
+[2] 3ms something3
+[3] 2ms something4
+...
+You can go into the [0] node and watch the hidden function informations.
