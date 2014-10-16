@@ -9,7 +9,7 @@ To get the information from the raw output, Use the test123.
 To build test123
 g++ test123.cpp -std=c++11 -o test123
 
-[Usage of test123]
+[Example]
 ./test123 the_result.txt /
 ./test123 the_result.txt /0/3/5
 ./test123 the_result.txt / --top 5
